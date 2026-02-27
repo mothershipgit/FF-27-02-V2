@@ -1,3 +1,4 @@
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -135,23 +136,6 @@ h2{font-size:1rem;margin-bottom:16px;color:#1e293b;font-weight:700}
     <div class="cw" style="height:440px"><canvas id="brandRevPieChart"></canvas></div>
     <div class="note">Revenue distribution among Lure brands (12M). Terro dominates at 62% — high entry barrier. Aunt Fannie's #2 at 18% with a very different price point.</div>
   </div>
-</div>
-
-<!-- SEASONALITY KPIs + CHART — copied from Tab D -->
-<div class="kpis" style="grid-template-columns:repeat(auto-fill,minmax(160px,1fr))">
-  <div class="kpi"><div class="kpi-v">Jul</div><div class="kpi-l">Peak (index 1.64)</div></div>
-  <div class="kpi"><div class="kpi-v">Jan</div><div class="kpi-l">Trough (index 0.33)</div></div>
-  <div class="kpi"><div class="kpi-v">5.0×</div><div class="kpi-l">Peak / Trough Ratio</div></div>
-  <div class="kpi"><div class="kpi-v">3.0%</div><div class="kpi-l">Revenue from listings &lt;12mo</div></div>
-</div>
-
-<div class="card">
-  <h3>Monthly Seasonality Index (1.0 = average month) &nbsp;
-    <span style="font-size:.7rem;color:#16a34a">&#9632; Peak</span>&nbsp;
-    <span style="font-size:.7rem;color:#dc2626">&#9632; Trough</span>
-  </h3>
-  <div class="cw" style="height:180px"><canvas id="seasIdxChartTb"></canvas></div>
-  <div class="note">Lure segment only. Index 1.0 = typical month. &gt;1.0 = sales above average, &lt;1.0 = below. Helps plan product launch timing and PPC budget allocation throughout the year.</div>
 </div>
 
 <!-- PACK SIZE BRAND SHARE PIES — UNITS -->
@@ -499,6 +483,25 @@ h2{font-size:1rem;margin-bottom:16px;color:#1e293b;font-weight:700}
     </tbody>
   </table></div>
 </div>
+
+
+<!-- SEASONALITY KPIs + CHART — copied from Tab D -->
+<div class="kpis" style="grid-template-columns:repeat(auto-fill,minmax(160px,1fr))">
+  <div class="kpi"><div class="kpi-v">Jul</div><div class="kpi-l">Peak (index 1.64)</div></div>
+  <div class="kpi"><div class="kpi-v">Jan</div><div class="kpi-l">Trough (index 0.33)</div></div>
+  <div class="kpi"><div class="kpi-v">5.0×</div><div class="kpi-l">Peak / Trough Ratio</div></div>
+  <div class="kpi"><div class="kpi-v">3.0%</div><div class="kpi-l">Revenue from listings &lt;12mo</div></div>
+</div>
+
+<div class="card">
+  <h3>Monthly Seasonality Index (1.0 = average month) &nbsp;
+    <span style="font-size:.7rem;color:#16a34a">&#9632; Peak</span>&nbsp;
+    <span style="font-size:.7rem;color:#dc2626">&#9632; Trough</span>
+  </h3>
+  <div class="cw" style="height:180px"><canvas id="seasIdxChartTb"></canvas></div>
+  <div class="note">Lure segment only. Index 1.0 = typical month. &gt;1.0 = sales above average, &lt;1.0 = below. Helps plan product launch timing and PPC budget allocation throughout the year.</div>
+</div>
+
 </div>
 
 
@@ -543,10 +546,10 @@ h2{font-size:1rem;margin-bottom:16px;color:#1e293b;font-weight:700}
     <table>
       <thead><tr>
         <th>Segment</th>
-        <th>Units (12M)</th>
-        <th>Revenue (12M)</th>
-        <th>Unit Share</th>
-        <th>Rev Share</th>
+        <th style="text-align:right">Units (12M)</th>
+        <th style="text-align:right">Revenue (12M)</th>
+        <th style="text-align:right">Unit Share</th>
+        <th style="text-align:right">Rev Share</th>
       </tr></thead>
       <tbody id="seg_summary_tbody"></tbody>
     </table>
@@ -1293,10 +1296,10 @@ function segInit() {
     const gc = k.growth_pct !== null ? (k.growth_pct >= 0 ? 'delta-pos' : 'delta-neg') : 'delta-neu';
     return `<tr>
       <td><strong style="color:${c}">${s}</strong></td>
-      <td>${k.units_12m.toLocaleString('en-US',{maximumFractionDigits:0})}</td>
-      <td>$${k.revenue_12m.toLocaleString('en-US',{maximumFractionDigits:0})}</td>
-      <td>${k.unit_share}%</td>
-      <td>${k.rev_share}%</td>
+      <td style="text-align:right">${k.units_12m.toLocaleString('en-US',{maximumFractionDigits:0})}</td>
+      <td style="text-align:right">$${k.revenue_12m.toLocaleString('en-US',{maximumFractionDigits:0})}</td>
+      <td style="text-align:right">${k.unit_share}%</td>
+      <td style="text-align:right">${k.rev_share}%</td>
     </tr>`;
   }).join('');
 }
